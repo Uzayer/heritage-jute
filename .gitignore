@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# project docs scratchpad (ignored)
+/docs/
+
 # production
 /build
 
