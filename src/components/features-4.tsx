@@ -2,8 +2,10 @@ import { Award, Factory, Globe, Settings2, Shield, Truck } from 'lucide-react'
 
 export default function Features() {
     return (
-        <section className="py-12 md:py-20">
-            <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
+        <section className="">
+            <div className="border-t border-muted-foreground/20">
+            <div className="container border-x border-muted-foreground/20 py-12 md:py-20">
+            <div className="mx-auto max-w-5xl space-y-8 md:space-y-16">
                 <div className="relative z-10 mx-auto max-w-xl space-y-6 text-center md:space-y-12">
                     <h2 className="text-balance text-4xl font-medium lg:text-5xl">Why Partner with Heritage Jute</h2>
                     <p>A government-certified exporter with over 10 years of experience, serving buyers in 31 countries with consistent quality and reliable logistics.</p>
@@ -53,6 +55,8 @@ export default function Features() {
                         <p className="text-sm">Active export relationships in 31 countries — from Europe and Australia to the Middle East and Southeast Asia.</p>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
         </section>
     )

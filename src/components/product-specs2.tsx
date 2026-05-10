@@ -129,8 +129,9 @@ const ProductSpecs2 = ({
   };
 
   return (
-    <section className={cn("py-16 md:py-24", className)}>
-      <div className="container max-w-5xl">
+    <section className={cn("", className)}>
+      <div className="border-t border-muted-foreground/20">
+      <div className="container max-w-5xl border-x border-muted-foreground/20 py-16 md:py-24">
         {/* Header */}
         <h2 className="mb-8 text-2xl font-semibold tracking-tight md:text-3xl">
           {title}
@@ -198,6 +199,7 @@ const ProductSpecs2 = ({
               ))}
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

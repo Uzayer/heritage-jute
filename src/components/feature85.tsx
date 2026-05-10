@@ -71,7 +71,7 @@ interface Feature85Props {
 
 const Feature85 = ({ className }: Feature85Props) => {
   return (
-    <section className={cn("py-32", className)}>
+    <section className={cn("", className)}>
       <div className="border-t">
         <div>
           <div className="relative container overflow-hidden border-x border-muted-foreground/20 py-32">
