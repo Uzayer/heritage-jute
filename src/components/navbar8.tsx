@@ -343,7 +343,7 @@ const MobileNavigationMenu = ({ open, setOpen }: MobileNavigationMenuProps) => {
                 )}
               </div>
               <div className="col-span-2 flex flex-col gap-4">
-                <div className="text-xs text-foreground/60 uppercase">
+                <div className="text-xs text-primary-foreground/70 uppercase">
                   SOCIAL
                 </div>
                 <div className="flex gap-4">
@@ -372,7 +372,9 @@ const renderMobileMenuItem = (item: MenuItem, index: number) => {
       className={`flex flex-col gap-4 text-primary-foreground ${item.className}`}
       key={`mobile-menu-item-${index}`}
     >
-      <div className="text-xs text-foreground/60 uppercase">{item.title}</div>
+      <div className="text-xs text-primary-foreground/70 uppercase">
+        {item.title}
+      </div>
       <ul className="flex flex-col gap-3">
         {item.links?.map((link, i) => (
           <li key={`mobile-nav-link-${i}`}>
