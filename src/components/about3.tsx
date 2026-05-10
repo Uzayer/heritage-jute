@@ -141,7 +141,15 @@ const About3 = ({
                 <p className="text-muted-foreground">{breakout.description}</p>
               </div>
               <Button variant="outline" className="mr-auto" asChild>
-                <a href={breakout.buttonUrl} target="_blank">
+                <a
+                  href={breakout.buttonUrl}
+                  {...(breakout.buttonUrl?.startsWith("http")
+                    ? {
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                      }
+                    : {})}
+                >
                   {breakout.buttonText}
                 </a>
               </Button>

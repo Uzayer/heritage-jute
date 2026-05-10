@@ -81,9 +81,9 @@ const Feature85 = ({ className }: Feature85Props) => {
                 Our Jute Product Range
               </h2>
               <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-aspect-video-1.svg"
-                alt="Jute product range"
-                className="max-h-64 w-full rounded-xl object-cover"
+                src="/images/gallery/Raw-Jute.webp"
+                alt="Raw jute fibre in graded bales — starting point for yarn, fabrics, bags, and rope"
+                className="max-h-64 w-full rounded-xl border border-border/60 bg-muted object-cover shadow-sm grayscale"
               />
               <p className="text-center text-xl md:text-3xl">
                 From raw fibre to finished bags — 11 product lines serving

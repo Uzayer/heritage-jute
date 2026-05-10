@@ -45,9 +45,8 @@ interface DesktopMenuItemProps {
 
 const LOGO = {
   url: "/",
-  src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23166534'/%3E%3Ctext x='50%25' y='50%25' font-family='system-ui%2Csans-serif' font-size='12' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='central'%3EHJ%3C/text%3E%3C/svg%3E",
+  src: "/logo.svg",
   alt: "Heritage Jute Fibers",
-  title: "Heritage Jute Fibers",
 };
 
 const NAVIGATION: MenuItem[] = [
@@ -59,31 +58,31 @@ const NAVIGATION: MenuItem[] = [
         label: "Raw Materials",
         description: "Raw jute, jute sliver, and cut jute fiber in multiple grades.",
         url: "/products/raw-jute",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+        image: "/images/gallery/Raw-Jute.webp",
       },
       {
         label: "Yarn",
         description: "Single and multi-ply jute yarn, 8–96 lbs count, natural or dyed.",
         url: "/products/jute-yarn",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
+        image: "/images/gallery/Jute-Yarn.webp",
       },
       {
         label: "Fabrics & Cloth",
         description: "Hessian and sacking cloth, 24–52 inch widths, 200–305 GSM.",
         url: "/products/hessian-cloth",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
+        image: "/images/gallery/Hessian-Cloth-scaled.webp",
       },
       {
         label: "Bags & Packaging",
         description: "Hessian bags, sacking sacks, and custom jute bags for bulk goods.",
         url: "/products/jute-bag",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg",
+        image: "/images/gallery/high-view-coffee-beans-burlap-sack-1-scaled.webp",
       },
       {
         label: "Rope & Twine",
         description: "Jute rope 6–42 mm and twine for packaging, tying, and gardening.",
         url: "/products/jute-rope",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg",
+        image: "/images/gallery/Jute-Ropes.webp",
       },
     ],
   },
@@ -132,7 +131,7 @@ const NAV_BUTTONS: {
     | "secondary";
 }[] = [
   {
-    label: "WhatsApp Us",
+    label: "WhatsApp",
     url: "https://wa.me/8801841111625",
     variant: "default",
   },
@@ -148,7 +147,6 @@ interface Navbar8Props {
 
 const Navbar8 = ({ className }: Navbar8Props) => {
   const [open, setOpen] = useState<boolean>(false);
-  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -157,22 +155,10 @@ const Navbar8 = ({ className }: Navbar8Props) => {
       }
     };
 
-    const handleScroll = () => {
-      navRef.current?.classList.toggle("bg-background", window.scrollY > 300);
-      navRef.current?.classList.toggle(
-        "bg-transparent",
-        !(window.scrollY > 300),
-      );
-    };
-
     handleResize();
-    handleScroll();
-
     window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -187,22 +173,15 @@ const Navbar8 = ({ className }: Navbar8Props) => {
 
   return (
     <section className={cn("", className)}>
-      <div
-        className="fixed top-0 z-500 w-full bg-transparent transition-colors duration-500"
-        ref={navRef}
-      >
-        <div className="container border-b">
+      <div className="fixed top-0 z-500 w-full bg-background border-b">
+        <div className="container">
           <div className="flex items-center justify-between gap-3.5 py-5">
-            <a
-              href={LOGO.url}
-              className="flex max-h-8 items-center gap-2 text-lg font-semibold tracking-tighter"
-            >
+            <a href={LOGO.url} className="flex items-center">
               <img
                 src={LOGO.src}
                 alt={LOGO.alt}
-                className="inline-block size-8"
+                className="h-11 w-auto sm:h-12"
               />
-              <span className="hidden md:inline-block">{LOGO.title}</span>
             </a>
             <NavigationMenu className="hidden lg:flex [&>div:nth-child(2)]:left-1/2 [&>div:nth-child(2)]:-translate-x-1/2">
               <NavigationMenuList>

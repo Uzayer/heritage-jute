@@ -48,7 +48,7 @@ const Hero249 = ({ className }: Hero249Props) => {
                   <a href="/products">Browse Products</a>
                 </Button>
                 <Button size="lg" variant="outline" className="w-fit" asChild>
-                  <a href="https://wa.me/8801841111625" target="_blank" rel="noreferrer">WhatsApp Us</a>
+                  <a href="https://wa.me/8801841111625" target="_blank" rel="noreferrer">WhatsApp</a>
                 </Button>
               </div>
             </div>

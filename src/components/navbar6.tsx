@@ -107,7 +107,7 @@ const Navbar6 = ({ className }: Navbar6Props) => {
         <div className="flex items-center gap-2.5">
           <a href="https://wa.me/8801841111625" target="_blank" rel="noreferrer" className="max-lg:hidden">
             <Button variant="outline" className="rounded-full">
-              <span className="relative z-10">WhatsApp Us</span>
+              <span className="relative z-10">WhatsApp</span>
             </Button>
           </a>
 

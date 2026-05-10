@@ -4,8 +4,8 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar8 } from "@/components/navbar8";
 import { Footer7 } from "@/components/footer7";
-import { WhatsappFab } from "@/components/whatsapp-fab";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { siteUrl } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -19,52 +19,75 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Heritage Jute Fibers — Bangladesh Jute Exporter",
-  description:
-    "Heritage Jute Fibers is a government-certified jute exporter based in Dhaka, Bangladesh. Supplying raw jute, yarn, cloth, bags, and rope to importers in 31 countries.",
+const siteTitle = "Heritage Jute Fibers — Bangladesh Jute Exporter";
+const siteDescription =
+  "Heritage Jute Fibers is a government-certified jute exporter based in Dhaka, Bangladesh. Supplying raw jute, yarn, cloth, bags, and rope to importers in 31 countries.";
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Heritage Jute Fibers",
+  url: siteUrl,
+  logo: `${siteUrl}/logo.svg`,
+  description: siteDescription,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "House 36, 1st Floor, Road 10, Nikunja-02",
+    addressLocality: "Dhaka",
+    postalCode: "1229",
+    addressCountry: "BD",
+  },
 };
 
-const footerProps = {
-  logo: undefined,
-  description:
-    "Government-certified jute exporter based in Dhaka, Bangladesh. Established 2014. Supplying 31 countries across 6 continents.",
-  sections: [
-    {
-      title: "Products",
-      links: [
-        { name: "Raw Jute", href: "/products/raw-jute" },
-        { name: "Jute Yarn", href: "/products/jute-yarn" },
-        { name: "Hessian Cloth", href: "/products/hessian-cloth" },
-        { name: "Jute Bags", href: "/products/jute-bag" },
-        { name: "Jute Rope", href: "/products/jute-rope" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { name: "About", href: "/about" },
-        { name: "Certifications", href: "/about#certifications" },
-        { name: "Export Markets", href: "/about#markets" },
-        { name: "Blog", href: "/blog" },
-      ],
-    },
-    {
-      title: "Contact",
-      links: [
-        { name: "Get in Touch", href: "/contact" },
-        { name: "WhatsApp", href: "https://wa.me/8801841111625" },
-        { name: "Privacy Policy", href: "/privacy" },
-        { name: "Terms of Service", href: "/terms" },
-      ],
-    },
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  keywords: [
+    "jute exporter Bangladesh",
+    "raw jute",
+    "jute yarn",
+    "hessian cloth",
+    "sacking bags",
+    "jute rope",
+    "BJGEA",
+    "Heritage Jute Fibers",
   ],
-  socialLinks: [],
-  copyright: `© ${new Date().getFullYear()} Heritage Jute Fibers. All rights reserved.`,
-  legalLinks: [
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "/terms" },
-  ],
+  authors: [{ name: "Heritage Jute Fibers", url: siteUrl }],
+  creator: "Heritage Jute Fibers",
+  publisher: "Heritage Jute Fibers",
+  formatDetection: { email: true, address: true, telephone: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: "Heritage Jute Fibers",
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        url: "/og.webp",
+        alt: "Heritage Jute Fibers — certified Bangladesh jute exporter",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/og.webp"],
+  },
 };
 
 export default function RootLayout({
@@ -85,10 +108,15 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationLd),
+          }}
+        />
         <Navbar8 />
-        <main className="flex-1 pt-20">{children}</main>
-        <Footer7 {...footerProps} />
-        <WhatsappFab />
+        <main className="flex-1 pt-24">{children}</main>
+        <Footer7 />
         <SpeedInsights />
       </body>
     </html>

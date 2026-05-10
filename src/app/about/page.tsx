@@ -1,13 +1,29 @@
+import type { Metadata } from "next";
 import { About3 } from "@/components/about3";
+import { Gallery7 } from "@/components/gallery7";
 import StatsSection from "@/components/stats-4";
 import Features4 from "@/components/features-4";
 import { Compliance7 } from "@/components/compliance7";
 import CallToAction from "@/components/call-to-action";
 
-export const metadata = {
-  title: "About Heritage Jute Fibers — Certified Jute Exporter, Bangladesh",
-  description:
-    "Established 2014 in Dhaka, Bangladesh. BJGEA member, ERC registered, Jute Ministry approved. Exporting to 31 countries for over 10 years.",
+const ogTitle = "About Heritage Jute Fibers — Certified Jute Exporter, Bangladesh";
+const ogDescription =
+  "Established 2014 in Dhaka, Bangladesh. BJGEA member, ERC registered, Jute Ministry approved. Exporting to 31 countries for over 10 years.";
+
+export const metadata: Metadata = {
+  title: ogTitle,
+  description: ogDescription,
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: ogTitle,
+    description: ogDescription,
+    url: "/about",
+  },
+  twitter: {
+    title: ogTitle,
+    description: ogDescription,
+    images: ["/og.webp"],
+  },
 };
 
 export default function AboutPage() {
@@ -17,14 +33,16 @@ export default function AboutPage() {
         title="About Heritage Jute Fibers"
         description="A registered private export company established in 2014, based in Dhaka, Bangladesh. Over 10 years of experience supplying government-certified, high-quality jute products to importers in 31 countries."
         mainImage={{
-          src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/annie-spratt-MChSQHxGZrQ-unsplash.jpg",
-          alt: "Jute production facility",
+          src: "https://images.unsplash.com/photo-1635352416471-91fdac82ca2c?auto=format&fit=crop&w=2400&q=80",
+          alt: "People gathered around piled harvest fibre outdoors in rural West Bengal — travel photo by Dibakar Roy on Unsplash",
         }}
         secondaryImage={{
-          src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/annie-spratt-AkftcHujUmk-unsplash.jpg",
-          alt: "Jute products",
+          src: "/images/gallery/high-view-coffee-beans-burlap-sack-1-scaled.webp",
+          alt: "Coffee beans in a jute hessian sack — typical agricultural packaging Heritage Jute supplies",
         }}
         breakout={{
+          src: "/logo.svg",
+          alt: "Heritage Jute Fibers",
           title: "Trusted by importers across 6 continents",
           description:
             "From raw jute to finished bags — reliable supply, consistent quality, and flexible customisation for bulk orders.",
@@ -53,6 +71,7 @@ export default function AboutPage() {
           },
         ]}
       />
+      <Gallery7 />
       <StatsSection />
       <Features4 />
       <Compliance7
@@ -80,16 +99,11 @@ export default function AboutPage() {
               "Active Dhaka City Corporation trade license, confirming legal business registration in Bangladesh.",
           },
         ]}
+        sectionId="certifications"
         certifications={[
           {
-            src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/compliance/AICPA-SOC.svg",
-            alt: "BJGEA",
-            status: "CERTIFIED",
-          },
-          {
-            src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/compliance/ISO-27001.svg",
-            alt: "ERC",
-            status: "REGISTERED",
+            src: "/images/bd-government-seal.svg",
+            alt: "Illustrative Bangladesh emblem (fictional, not an official seal)",
           },
         ]}
         complianceHeading="BJGEA · ERC · Jute Ministry"
