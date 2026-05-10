@@ -12,37 +12,12 @@ interface Hero249Props {
   className?: string;
 }
 
-const LOGOS = [
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-1.svg",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-2.svg",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-3.svg",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-4.svg",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-5.svg",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-6.svg",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-7.svg",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-8.svg",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-9.svg",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-10.svg",
-  },
+const EXPORT_COUNTRIES = [
+  "Italy", "Spain", "Slovenia", "Romania", "Poland", "Russia", "Morocco",
+  "Malaysia", "Australia", "New Zealand", "India", "Pakistan", "Sri Lanka",
+  "Myanmar", "Vietnam", "China", "South Korea", "Thailand", "Japan", "Fiji",
+  "Timor-Leste", "South Africa", "Tanzania", "Egypt", "Tunisia", "Turkey",
+  "Jordan", "Iran", "Mexico", "Peru", "Brazil",
 ];
 
 const Hero249 = ({ className }: Hero249Props) => {
@@ -52,24 +27,30 @@ const Hero249 = ({ className }: Hero249Props) => {
         <div className="container grid xl:grid-cols-2 xl:gap-16">
           <div className="flex flex-col justify-between gap-6 py-12">
             <h1 className="text-4xl font-medium tracking-tight text-balance text-foreground md:text-5xl lg:text-6xl">
-              Reach, collaborate, and grow worldwide{" "}
+              Bangladesh&apos;s Trusted Jute Exporter{" "}
               <span className="text-muted-foreground">
-                with tools that span the globe.
+                shipping to 31 countries worldwide.
               </span>
             </h1>
             <div className="flex max-w-xl flex-col gap-6">
               <p className="text-muted-foreground md:text-lg">
-                Imagine a single place where teams and ideas from every timezone
-                meet, work together in real time, and turn distance into no
-                object.
+                Heritage Jute Fibers supplies raw jute, yarn, cloth, bags, and
+                rope to importers, wholesalers, and manufacturers across six
+                continents. Government certified, factory pricing, reliable
+                shipping.
               </p>
               <p className="md:text-lg">
-                The right tools give every team the power to work across borders
-                and time zones, effortlessly.
+                Established 2014 · BJGEA Member · ERC Certified · Jute Ministry
+                Approved
               </p>
-              <Button size="lg" className="w-fit">
-                Book a demo
-              </Button>
+              <div className="flex flex-wrap gap-3">
+                <Button size="lg" className="w-fit" asChild>
+                  <a href="/products">Browse Products</a>
+                </Button>
+                <Button size="lg" variant="outline" className="w-fit" asChild>
+                  <a href="https://wa.me/8801841111625" target="_blank" rel="noreferrer">WhatsApp Us</a>
+                </Button>
+              </div>
             </div>
           </div>
           <div className="relative flex min-h-[320px] items-center justify-center">
@@ -80,17 +61,15 @@ const Hero249 = ({ className }: Hero249Props) => {
       <div className="border-b">
         <div className="container grid items-center gap-10 py-12 lg:grid-cols-2 lg:gap-16">
           <p className="text-center text-sm lg:text-left lg:text-base">
-            Teams that connect and grow across borders
+            Exporting to 31 countries across 6 continents
           </p>
           <Marquee className="relative">
             <MarqueeContent>
-              {LOGOS.map((logo, index) => (
+              {EXPORT_COUNTRIES.map((country, index) => (
                 <MarqueeItem key={index}>
-                  <img
-                    src={logo.src}
-                    alt={`logo ${index + 1}`}
-                    className="mx-6 h-6 max-w-24 object-contain opacity-80 grayscale md:h-7 dark:invert"
-                  />
+                  <span className="mx-6 text-sm font-medium text-muted-foreground opacity-80">
+                    {country}
+                  </span>
                 </MarqueeItem>
               ))}
             </MarqueeContent>
