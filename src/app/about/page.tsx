@@ -5,6 +5,7 @@ import StatsSection from "@/components/stats-4";
 import Features4 from "@/components/features-4";
 import { Compliance7 } from "@/components/compliance7";
 import CallToAction from "@/components/call-to-action";
+import { defaultOgImage } from "@/lib/site";
 
 const ogTitle = "About Heritage Jute Fibers — Certified Jute Exporter, Bangladesh";
 const ogDescription =
@@ -18,11 +19,12 @@ export const metadata: Metadata = {
     title: ogTitle,
     description: ogDescription,
     url: "/about",
+    images: [defaultOgImage],
   },
   twitter: {
     title: ogTitle,
     description: ogDescription,
-    images: ["/og.webp"],
+    images: [defaultOgImage.url],
   },
 };
 

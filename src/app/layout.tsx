@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Navbar8 } from "@/components/navbar8";
 import { Footer7 } from "@/components/footer7";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { siteUrl } from "@/lib/site";
+import { siteUrl, defaultOgImage } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -75,18 +75,13 @@ export const metadata: Metadata = {
     siteName: "Heritage Jute Fibers",
     title: siteTitle,
     description: siteDescription,
-    images: [
-      {
-        url: "/og.webp",
-        alt: "Heritage Jute Fibers — certified Bangladesh jute exporter",
-      },
-    ],
+    images: [defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/og.webp"],
+    images: [defaultOgImage.url],
   },
 };
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Contact11 } from "@/components/contact11";
 
 import { submitContactInquiry } from "./actions";
+import { defaultOgImage } from "@/lib/site";
 
 const ogTitle = "Contact Heritage Jute Fibers — Send an Inquiry";
 const ogDescription =
@@ -15,11 +16,12 @@ export const metadata: Metadata = {
     title: ogTitle,
     description: ogDescription,
     url: "/contact",
+    images: [defaultOgImage],
   },
   twitter: {
     title: ogTitle,
     description: ogDescription,
-    images: ["/og.webp"],
+    images: [defaultOgImage.url],
   },
 };
 

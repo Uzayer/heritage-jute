@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Feature73 } from "@/components/feature73";
 import CallToAction from "@/components/call-to-action";
 import { productCategories } from "@/lib/products";
+import { defaultOgImage } from "@/lib/site";
 
 const ogTitle = "Jute Products — Heritage Jute Fibers";
 const ogDescription =
@@ -15,11 +16,12 @@ export const metadata: Metadata = {
     title: ogTitle,
     description: ogDescription,
     url: "/products",
+    images: [defaultOgImage],
   },
   twitter: {
     title: ogTitle,
     description: ogDescription,
-    images: ["/og.webp"],
+    images: [defaultOgImage.url],
   },
 };
 
