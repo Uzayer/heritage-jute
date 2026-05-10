@@ -1,6 +1,6 @@
 import { Hero249 } from "@/components/hero249";
 import { Feature85 } from "@/components/feature85";
-import { Stats1 } from "@/components/stats1";
+import { StatsSection } from "@/components/stats-2";
 import ContentSection from "@/components/content-4";
 import { Compliance7 } from "@/components/compliance7";
 import FAQsTwo from "@/components/faqs-2";
@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Hero249 />
       <Feature85 />
-      <Stats1 />
+      <StatsSection />
       <ContentSection />
       <Compliance7
         heading="Government Certified & Compliant"
