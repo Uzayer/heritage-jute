@@ -158,7 +158,7 @@ const Feature73 = (props: Props) => {
           )}
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {features?.slice(0, 3).map((feature, i) => (
+          {features?.map((feature, i) => (
             <div
               key={i}
               className="flex flex-col overflow-clip rounded-xl border border-border"
@@ -170,13 +170,20 @@ const Feature73 = (props: Props) => {
                   className="aspect-4/3 h-full w-full object-cover object-top transition-opacity hover:opacity-80"
                 />
               </a>
-              <div className="px-5 pt-6 pb-6 md:px-6 md:pb-7 lg:px-8 lg:pb-8">
+              <div className="flex flex-col flex-1 px-5 pt-6 pb-6 md:px-6 md:pb-7 lg:px-8 lg:pb-8">
                 <h3 className="mb-2 text-base font-semibold md:text-lg">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-muted-foreground md:text-base lg:text-lg">
+                <p className="mb-4 text-sm text-muted-foreground md:text-base lg:text-lg">
                   {feature.description}
                 </p>
+                {feature.href && (
+                  <Button variant="outline" size="sm" asChild className="mt-auto self-start">
+                    <a href={feature.href}>
+                      View specs <ArrowRight className="size-4" />
+                    </a>
+                  </Button>
+                )}
               </div>
             </div>
           ))}
