@@ -37,6 +37,9 @@ yarn-error.log*
 # local reference / source assets (not versioned)
 /docs/
 
+# Firecrawl CLI cache / scrape output
+.firecrawl/
+
 # vercel
 .vercel
 
