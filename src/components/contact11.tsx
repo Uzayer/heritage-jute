@@ -163,7 +163,7 @@ const Contact11 = (props: Props) => {
   };
 
   return (
-    <section className={cn("bg-muted py-32", className)}>
+    <section className={cn("py-32", className)}>
       <div className="container mx-auto">
         <div className="mx-auto max-w-5xl">
           <div className="flex flex-col gap-4 text-left">
