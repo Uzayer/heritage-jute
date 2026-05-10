@@ -1,5 +1,4 @@
 import { DottedGlowBackground } from "@/components/ui/dotted-glow-background";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 interface Feature {
@@ -10,7 +9,6 @@ interface Feature {
 interface Certification {
   src: string;
   alt: string;
-  status: string;
 }
 
 interface Compliance7Props {
@@ -20,6 +18,8 @@ interface Compliance7Props {
   certifications?: Certification[];
   complianceHeading?: string;
   complianceDescription?: string;
+  /** Anchor id for in-page links (e.g. <a href="/about#certifications">). */
+  sectionId?: string;
   className?: string;
 }
 
@@ -48,14 +48,8 @@ const defaultFeatures = [
 
 const defaultCertifications = [
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/compliance/AICPA-SOC.svg",
-    alt: "AICPA SOC 2",
-    status: "IN PROGRESS",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/compliance/ISO-27001.svg",
-    alt: "ISO 27001",
-    status: "IN PROGRESS",
+    src: "/images/bd-government-seal.svg",
+    alt: "Illustrative Bangladesh emblem (fictional, not an official seal)",
   },
 ];
 
@@ -75,10 +69,11 @@ const Compliance7 = ({
   certifications = defaultCertifications,
   complianceHeading = "Security and Scalability",
   complianceDescription = "Platform engineered for maximum security and unlimited growth potential, pursuing SOC2 Type 2 and ISO27001 certifications.",
+  sectionId,
   className,
 }: Compliance7Props = {}) => {
   return (
-    <section className={cn("py-32", className)}>
+    <section id={sectionId} className={cn("py-32", className)}>
       <div className="container">
         <div className="relative grid lg:grid-cols-2">
           <div className="absolute top-0 h-5 w-full">
@@ -121,14 +116,13 @@ const Compliance7 = ({
               {certifications.map((certification) => {
                 return (
                   <div
-                    key={certification.alt}
-                    className="flex flex-col items-center justify-center gap-2"
+                    key={certification.src}
+                    className="flex items-center justify-center"
                   >
-                    <Badge variant="outline">{certification.status}</Badge>
                     <img
                       src={certification.src}
                       alt={certification.alt}
-                      className="size-28 sm:size-34 dark:invert"
+                      className="size-36 object-contain sm:size-44"
                     />
                   </div>
                 );

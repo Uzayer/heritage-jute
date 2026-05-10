@@ -1,185 +1,108 @@
-import {
-  FaFacebook,
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-interface FooterLink {
-  name: string;
-  href: string;
-}
-interface FooterSection {
-  title: string;
-  links: FooterLink[];
-}
-interface FooterSocialLink {
-  icon: React.ReactNode;
-  href: string;
-  label: string;
-}
-interface FooterLogo {
-  url: string;
-  src: string;
-  alt: string;
-  title: string;
-}
-
-interface FooterBasicProps {
-  logo?: FooterLogo;
-  description?: string;
-  sections?: FooterSection[];
-  socialLinks?: FooterSocialLink[];
-  copyright?: string;
-  legalLinks?: FooterLink[];
-  className?: string;
-}
-
-interface Footer7Props extends FooterBasicProps {}
-type Props = Partial<Footer7Props>;
-
-const defaultProps: Footer7Props = {
-  logo: {
-    url: "https://www.shadcnblocks.com",
-    src: "/images/logo/shadcnblocks-logo-word.svg",
-    alt: "logo",
-    title: "Shadcnblocks.com",
-  },
-  description: "Finely crafted blocks built with Shadcn UI.",
-  sections: [
-    {
-      title: "Product",
-      links: [
-        { name: "Overview", href: "#" },
-        { name: "Pricing", href: "#" },
-        { name: "Marketplace", href: "#" },
-        { name: "Features", href: "#" },
-        { name: "Integrations", href: "#" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { name: "About", href: "#" },
-        { name: "Team", href: "#" },
-        { name: "Blog", href: "#" },
-        { name: "Careers", href: "#" },
-        { name: "Contact", href: "#" },
-      ],
-    },
-    {
-      title: "Support",
-      links: [
-        { name: "Help center", href: "#" },
-        { name: "Documentation", href: "#" },
-        { name: "Status", href: "#" },
-        { name: "Community", href: "#" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        { name: "Guides", href: "#" },
-        { name: "Templates", href: "#" },
-        { name: "Sales", href: "#" },
-        { name: "Advertise", href: "#" },
-      ],
-    },
-  ],
-  socialLinks: [
-    {
-      icon: <FaInstagram className="size-5" />,
-      href: "#",
-      label: "Instagram",
-    },
-    { icon: <FaFacebook className="size-5" />, href: "#", label: "Facebook" },
-    { icon: <FaTwitter className="size-5" />, href: "#", label: "Twitter" },
-    { icon: <FaLinkedin className="size-5" />, href: "#", label: "LinkedIn" },
-    { icon: <FaGithub className="size-5" />, href: "#", label: "GitHub" },
-  ],
-  copyright: "© 2024 Shadcnblocks.com. All rights reserved.",
-  legalLinks: [
-    { name: "Terms and Conditions", href: "#" },
-    { name: "Privacy Policy", href: "#" },
-  ],
-};
-
-const Footer7 = (props: Props) => {
-  const {
-    logo,
-    sections,
-    description,
-    socialLinks,
-    copyright,
-    legalLinks,
-    className,
-  } = {
-    ...defaultProps,
-    ...props,
-  };
-
+const Footer7 = ({ className }: { className?: string }) => {
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container mx-auto">
-        <div className="flex w-full flex-col justify-between gap-10 lg:flex-row lg:items-start lg:text-left">
-          <div className="flex w-full flex-col justify-between gap-6 lg:items-start">
-            <div className="flex items-center gap-2 lg:justify-start">
-              <a href={logo?.url}>
-                <img
-                  src={logo?.src}
-                  alt={logo?.alt}
-                  title={logo?.title}
-                  className="h-7 dark:invert"
-                />
-              </a>
-            </div>
-            <p className="max-w-[70%] text-sm text-muted-foreground">
-              {description}
+    <footer className={cn("border-t", className)}>
+      <div className="container py-16">
+        <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
+          <div className="max-w-xs space-y-4">
+            <p className="font-semibold tracking-tight">Heritage Jute Fibers</p>
+            <p className="text-sm text-muted-foreground">
+              Government-certified jute exporter based in Dhaka, Bangladesh.
+              Established 2014. Supplying 31 countries across 6 continents.
             </p>
-            <ul className="flex items-center space-x-6 text-muted-foreground">
-              {socialLinks?.map((social, idx) => (
-                <li key={idx} className="font-medium hover:text-primary">
-                  <a href={social.href} aria-label={social.label}>
-                    {social.icon}
+            <address className="not-italic space-y-1 text-sm text-muted-foreground">
+              <p>House 36, 1st Floor, Road 10</p>
+              <p>Nikunja-02, Dhaka-1229, Bangladesh</p>
+              <p>+880 1841-111625</p>
+              <p>info@heritagejute.com</p>
+            </address>
+          </div>
+
+          <div className="grid gap-10 sm:grid-cols-3">
+            <div>
+              <h3 className="mb-4 text-sm font-semibold">Products</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                {[
+                  ["Raw Jute", "/products/raw-jute"],
+                  ["Jute Sliver", "/products/jute-sliver"],
+                  ["Jute Yarn", "/products/jute-yarn"],
+                  ["Hessian Cloth", "/products/hessian-cloth"],
+                  ["Sacking Cloth", "/products/sacking-cloth"],
+                  ["Jute Bags", "/products/jute-bag"],
+                  ["Jute Rope", "/products/jute-rope"],
+                ].map(([name, href]) => (
+                  <li key={href}>
+                    <Link href={href} className="hover:text-foreground transition-colors">
+                      {name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-sm font-semibold">Company</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                {[
+                  ["About", "/about"],
+                  ["Certifications", "/about#certifications"],
+                  ["Products", "/products"],
+                  ["Contact", "/contact"],
+                ].map(([name, href]) => (
+                  <li key={href}>
+                    <Link href={href} className="hover:text-foreground transition-colors">
+                      {name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-sm font-semibold">Inquiries</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li>
+                  <a
+                    href="https://wa.me/8801841111625"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    WhatsApp
                   </a>
                 </li>
-              ))}
-            </ul>
-          </div>
-          <div className="grid w-full gap-6 md:grid-cols-3 lg:gap-20">
-            {sections?.slice(0, 3).map((section, sectionIdx) => (
-              <div key={sectionIdx}>
-                <h3 className="mb-4 font-semibold tracking-tight">
-                  {section.title}
-                </h3>
-                <ul className="space-y-3 text-sm text-muted-foreground">
-                  {section.links.map((link, linkIdx) => (
-                    <li
-                      key={linkIdx}
-                      className="font-medium hover:text-primary"
-                    >
-                      <a href={link.href}>{link.name}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+                <li>
+                  <a
+                    href="mailto:info@heritagejute.com"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Email
+                  </a>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-foreground transition-colors">
+                    Inquiry Form
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-border py-8 text-xs font-medium text-muted-foreground md:flex-row md:items-center md:text-left">
-          <p className="order-2 lg:order-1">{copyright}</p>
-          <ul className="order-1 flex flex-col gap-2 md:order-2 md:flex-row">
-            {legalLinks?.map((link, idx) => (
-              <li key={idx} className="hover:text-primary">
-                <a href={link.href}> {link.name}</a>
-              </li>
-            ))}
-          </ul>
+
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t pt-8 text-xs text-muted-foreground md:flex-row md:items-center">
+          <p>© {new Date().getFullYear()} Heritage Jute Fibers. All rights reserved.</p>
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-6">
+            <p>BJGEA Member · ERC Registered · Jute Ministry Approved</p>
+            <div className="flex gap-4">
+              <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 };
 

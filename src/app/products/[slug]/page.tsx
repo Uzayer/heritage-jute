@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
@@ -12,13 +14,36 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const { slug } = await params;
   const product = products.find((p) => p.slug === slug);
   if (!product) return {};
+
+  const path = `/products/${product.slug}`;
+  const title = `${product.name} — Heritage Jute Fibers`;
+
   return {
-    title: `${product.name} — Heritage Jute Fibers`,
+    title,
     description: product.shortDescription,
+    alternates: { canonical: path },
+    openGraph: {
+      title,
+      description: product.shortDescription,
+      url: path,
+      type: "website",
+      images: [
+        {
+          url: product.image.src,
+          alt: product.image.alt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: product.shortDescription,
+      images: [product.image.src],
+    },
   };
 }
 
@@ -34,28 +59,48 @@ export default async function ProductDetailPage({
   return (
     <div>
       <div className="border-t border-muted-foreground/20">
-      <div className="container max-w-5xl border-x border-muted-foreground/20 py-12">
-        <div className="mb-2 text-sm text-muted-foreground">
-          <a href="/products" className="hover:underline">
-            Products
-          </a>{" "}
-          / {product.category}
+        <div className="container max-w-5xl border-x border-muted-foreground/20 py-12">
+          <div className="mb-2 text-sm text-muted-foreground">
+            <a href="/products" className="hover:underline">
+              Products
+            </a>{" "}
+            / {product.category}
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 md:items-center">
+            <div>
+              <h1 className="text-4xl font-semibold tracking-tight">
+                {product.name}
+              </h1>
+              <p className="mt-4 text-lg text-muted-foreground">
+                {product.shortDescription}
+              </p>
+              <div className="mt-6 flex gap-3">
+                <Button asChild>
+                  <a
+                    href="https://wa.me/8801841111625"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Request a Quote
+                  </a>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/contact">Contact Us</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="relative aspect-4/3 overflow-hidden rounded-xl border border-border bg-muted">
+              <Image
+                src={product.image.src}
+                alt={product.image.alt}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
         </div>
-        <h1 className="text-4xl font-semibold tracking-tight">{product.name}</h1>
-        <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-          {product.shortDescription}
-        </p>
-        <div className="mt-6 flex gap-3">
-          <Button asChild>
-            <a href="https://wa.me/8801841111625" target="_blank" rel="noreferrer">
-              Request a Quote
-            </a>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href="/contact">Contact Us</Link>
-          </Button>
-        </div>
-      </div>
       </div>
       <ProductSpecs2 title="Specifications" specGroups={product.specGroups} />
     </div>

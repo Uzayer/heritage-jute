@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Hero249 } from "@/components/hero249";
 import { Feature85 } from "@/components/feature85";
 import { StatsSection } from "@/components/stats-2";
@@ -5,6 +6,10 @@ import ContentSection from "@/components/content-4";
 import { Compliance7 } from "@/components/compliance7";
 import FAQsTwo from "@/components/faqs-2";
 import CallToAction from "@/components/call-to-action";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
@@ -40,14 +45,8 @@ export default function Home() {
         ]}
         certifications={[
           {
-            src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/compliance/AICPA-SOC.svg",
-            alt: "BJGEA",
-            status: "CERTIFIED",
-          },
-          {
-            src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/compliance/ISO-27001.svg",
-            alt: "ERC",
-            status: "REGISTERED",
+            src: "/images/bd-government-seal.svg",
+            alt: "Illustrative Bangladesh emblem (fictional, not an official seal)",
           },
         ]}
         complianceHeading="BJGEA · ERC · Jute Ministry"
@@ -57,7 +56,7 @@ export default function Home() {
       <CallToAction
         heading="Ready to Source Jute?"
         description="Send us your product requirements and we'll respond within one business day. For urgent inquiries, WhatsApp is fastest."
-        primaryLabel="WhatsApp Us"
+        primaryLabel="WhatsApp"
         primaryHref="https://wa.me/8801841111625"
         secondaryLabel="Send an Inquiry"
         secondaryHref="/contact"
