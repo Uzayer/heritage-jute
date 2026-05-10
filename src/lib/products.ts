@@ -10,11 +10,17 @@ interface SpecGroup {
   specs: Spec[];
 }
 
+interface ProductImage {
+  src: string;
+  alt: string;
+}
+
 interface Product {
   slug: string;
   name: string;
   category: string;
   shortDescription: string;
+  image: ProductImage;
   specGroups: SpecGroup[];
 }
 
@@ -25,6 +31,10 @@ export const products: Product[] = [
     category: "Raw Materials",
     shortDescription:
       "High-grade raw jute fibers sourced from Bangladeshi fields, available in multiple grades for yarn spinning and industrial processing.",
+    image: {
+      src: "/images/gallery/Raw-Jute.webp",
+      alt: "Bundles of raw jute fiber",
+    },
     specGroups: [
       {
         id: "overview",
@@ -70,6 +80,10 @@ export const products: Product[] = [
     category: "Raw Materials",
     shortDescription:
       "Loose, untwisted bundles of parallel jute fibres produced during early spinning, used as intermediate material before drawing and yarn making.",
+    image: {
+      src: "/images/gallery/pexels-sm-mostafijur-nasim-644778890-17778573.webp",
+      alt: "Jute sliver bundles",
+    },
     specGroups: [
       {
         id: "overview",
@@ -108,6 +122,10 @@ export const products: Product[] = [
     category: "Raw Materials",
     shortDescription:
       "Jute fibres cut to uniform short lengths, used in stuffing, insulation, non-woven products, and industrial applications.",
+    image: {
+      src: "/images/gallery/web-photo_2.webp",
+      alt: "Cut jute fiber lengths",
+    },
     specGroups: [
       {
         id: "overview",
@@ -142,6 +160,10 @@ export const products: Product[] = [
     category: "Yarn",
     shortDescription:
       "Natural fibre thread made by twisting jute fibres, used in textiles, woven fabrics, and industrial products.",
+    image: {
+      src: "/images/gallery/Jute-Yarn.webp",
+      alt: "Spools of jute yarn",
+    },
     specGroups: [
       {
         id: "overview",
@@ -190,6 +212,10 @@ export const products: Product[] = [
     category: "Fabrics & Cloth",
     shortDescription:
       "Coarse woven jute fabric commonly used for sacks, packaging, and industrial applications. Available in a wide range of widths and weights.",
+    image: {
+      src: "/images/gallery/Hessian-Cloth-scaled.webp",
+      alt: "Roll of hessian (burlap) cloth",
+    },
     specGroups: [
       {
         id: "overview",
@@ -244,6 +270,10 @@ export const products: Product[] = [
     category: "Fabrics & Cloth",
     shortDescription:
       "Heavy-duty coarse jute fabric primarily used for making sacks, bags, and packaging materials. Strong, breathable, and durable.",
+    image: {
+      src: "/images/gallery/Jute-Cloth.webp",
+      alt: "Heavy sacking jute cloth",
+    },
     specGroups: [
       {
         id: "overview",
@@ -287,6 +317,10 @@ export const products: Product[] = [
     category: "Bags & Packaging",
     shortDescription:
       "Strong, eco-friendly sacks made from woven hessian jute fabric used for carrying and storing bulk goods.",
+    image: {
+      src: "/images/gallery/high-view-coffee-beans-burlap-sack-1-scaled.webp",
+      alt: "Hessian burlap sack filled with coffee beans",
+    },
     specGroups: [
       {
         id: "overview",
@@ -330,6 +364,10 @@ export const products: Product[] = [
     category: "Bags & Packaging",
     shortDescription:
       "Heavy-duty sacks made from coarse jute sacking fabric. Ideal for packing and transporting grains, sugar, and agricultural products.",
+    image: {
+      src: "/images/gallery/pexels-cottonbro-4829070-scaled.webp",
+      alt: "Stacked jute sacking sacks",
+    },
     specGroups: [
       {
         id: "overview",
@@ -370,6 +408,10 @@ export const products: Product[] = [
     category: "Rope & Twine",
     shortDescription:
       "Strong rope made by twisting natural jute fibres into strands. Used for packaging, tying, gardening, and general-purpose binding.",
+    image: {
+      src: "/images/gallery/Jute-Ropes.webp",
+      alt: "Coiled jute ropes",
+    },
     specGroups: [
       {
         id: "overview",
@@ -408,6 +450,10 @@ export const products: Product[] = [
     category: "Bags & Packaging",
     shortDescription:
       "General-purpose jute bags available in a range of sizes and weights. Suitable for food grain, sand, agricultural, and industrial packaging.",
+    image: {
+      src: "/images/gallery/WhatsApp-Image-2025-06-12-at-11.20.41.webp",
+      alt: "Jute bag for agricultural goods",
+    },
     specGroups: [
       {
         id: "overview",
@@ -445,7 +491,11 @@ export const products: Product[] = [
     name: "Jute Twine",
     category: "Rope & Twine",
     shortDescription:
-      "Lightweight jute twine made from twisted natural jute yarn. Widely used for gardening, crafts, and light-duty binding.",
+      "Natural jute twine made from twisted jute yarn. Used for agricultural baling, industrial packaging, horticulture supply, and general-purpose binding.",
+    image: {
+      src: "/images/gallery/rough-rope-texture-composition-scaled.webp",
+      alt: "Coils of jute twine",
+    },
     specGroups: [
       {
         id: "overview",
@@ -457,7 +507,7 @@ export const products: Product[] = [
           { label: "Qualities", value: "Sacking, Hessian, CB, CRM" },
           {
             label: "Primary Use",
-            value: "Gardening, crafts, light-duty binding",
+            value: "Agricultural baling, industrial packaging, horticulture supply",
           },
           { label: "HS Code", value: "53072000" },
         ],
