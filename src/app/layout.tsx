@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Navbar8 } from "@/components/navbar8";
 import { Footer7 } from "@/components/footer7";
 import { WhatsappFab } from "@/components/whatsapp-fab";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -88,6 +89,7 @@ export default function RootLayout({
         <main className="flex-1 pt-20">{children}</main>
         <Footer7 {...footerProps} />
         <WhatsappFab />
+        <SpeedInsights />
       </body>
     </html>
   );
