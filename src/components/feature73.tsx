@@ -134,7 +134,7 @@ const Feature73 = (props: Props) => {
 
   return (
     <section className={cn("", className)}>
-      <div className="border-t border-muted-foreground/20">
+      <div className="border-muted-foreground/20">
       <div className="container mx-auto border-x border-muted-foreground/20 py-32">
         <div className="mb-9 lg:mb-14 lg:max-w-3xl">
           <h2 className="mb-3 text-3xl font-semibold tracking-tight text-balance md:mb-4 md:text-4xl lg:mb-6">
