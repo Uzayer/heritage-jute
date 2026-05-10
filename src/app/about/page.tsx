@@ -1,4 +1,5 @@
 import { About3 } from "@/components/about3";
+import StatsSection from "@/components/stats-4";
 import Features4 from "@/components/features-4";
 import { Compliance7 } from "@/components/compliance7";
 import CallToAction from "@/components/call-to-action";
@@ -52,6 +53,7 @@ export default function AboutPage() {
           },
         ]}
       />
+      <StatsSection />
       <Features4 />
       <Compliance7
         heading="Certifications & Registrations"
