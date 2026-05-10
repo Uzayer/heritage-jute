@@ -127,6 +127,13 @@ const Contact10 = ({ className, onSubmit }: Contact10Props) => {
           </div>
         </div>
 
+        <div className="mt-8">
+          <h2 className="font-semibold">Business Hours</h2>
+          <p className="mt-3 text-muted-foreground">
+            Monday – Friday: 9:00 AM – 5:00 PM (GMT+6)
+          </p>
+        </div>
+
         <DashedLine className="my-12" />
 
         <div className="mx-auto">

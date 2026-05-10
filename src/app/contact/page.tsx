@@ -1,9 +1,26 @@
+import type { Metadata } from "next";
 import { Contact11 } from "@/components/contact11";
 
-export const metadata = {
-  title: "Contact Heritage Jute Fibers — Send an Inquiry",
-  description:
-    "Get in touch with Heritage Jute Fibers. Send an inquiry, WhatsApp us, or call. House 36, Road 10, Nikunja-02, Dhaka-1229, Bangladesh.",
+import { submitContactInquiry } from "./actions";
+
+const ogTitle = "Contact Heritage Jute Fibers — Send an Inquiry";
+const ogDescription =
+  "Get in touch with Heritage Jute Fibers. Send an inquiry, WhatsApp us, or call. House 36, Road 10, Nikunja-02, Dhaka-1229, Bangladesh.";
+
+export const metadata: Metadata = {
+  title: ogTitle,
+  description: ogDescription,
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: ogTitle,
+    description: ogDescription,
+    url: "/contact",
+  },
+  twitter: {
+    title: ogTitle,
+    description: ogDescription,
+    images: ["/og.webp"],
+  },
 };
 
 export default function ContactPage() {
@@ -24,6 +41,7 @@ export default function ContactPage() {
       successMessage="Thank you — we'll respond within one business day."
       submitLabel="Send Inquiry"
       submittingLabel="Sending…"
+      onSubmit={submitContactInquiry}
     />
   );
 }
