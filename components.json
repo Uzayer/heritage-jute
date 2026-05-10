@@ -27,6 +27,9 @@
       "headers": {
         "Authorization": "Bearer ${SHADCNBLOCKS_API_KEY}"
       }
+    },
+    "@tailark-pro": {
+      "url": "https://tailark.com/r/{name}.json"
     }
   }
 }
