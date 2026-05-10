@@ -5,6 +5,7 @@ import Link from "next/link";
 import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { ProductSpecs2 } from "@/components/product-specs2";
+import { defaultOgImage } from "@/lib/site";
 
 export async function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -31,18 +32,13 @@ export async function generateMetadata({
       description: product.shortDescription,
       url: path,
       type: "website",
-      images: [
-        {
-          url: product.image.src,
-          alt: product.image.alt,
-        },
-      ],
+      images: [defaultOgImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: product.shortDescription,
-      images: [product.image.src],
+      images: [defaultOgImage.url],
     },
   };
 }
@@ -58,7 +54,7 @@ export default async function ProductDetailPage({
 
   return (
     <div>
-      <div className="border-t border-muted-foreground/20">
+      <div className="border-muted-foreground/20">
         <div className="container max-w-5xl border-x border-muted-foreground/20 py-12">
           <div className="mb-2 text-sm text-muted-foreground">
             <a href="/products" className="hover:underline">

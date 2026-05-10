@@ -22,8 +22,8 @@ const EXPORT_COUNTRIES = [
 
 const Hero249 = ({ className }: Hero249Props) => {
   return (
-    <section className={cn("pt-32", className)}>
-      <div className="border-y">
+    <section className={cn("", className)}>
+      <div className="border-b">
         <div className="container grid xl:grid-cols-2 xl:gap-16">
           <div className="flex flex-col justify-between gap-6 py-12">
             <h1 className="text-4xl font-medium tracking-tight text-balance text-foreground md:text-5xl lg:text-6xl">
