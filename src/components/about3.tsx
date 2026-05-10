@@ -112,8 +112,9 @@ const About3 = ({
   ],
 }: About3Props) => {
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container">
+    <section className={cn("", className)}>
+      <div className="border-t border-muted-foreground/20">
+      <div className="container border-x border-muted-foreground/20 py-32">
         <div className="mb-14 flex flex-col gap-5 lg:w-2/3">
           <h1 className="text-5xl font-semibold tracking-tighter lg:text-6xl">
             {title}
@@ -209,6 +210,7 @@ const About3 = ({
             ))}
           </div>
         )}
+      </div>
       </div>
     </section>
   );
