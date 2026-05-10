@@ -33,8 +33,10 @@ export default function FAQsTwo() {
     ]
 
     return (
-        <section className="py-16 md:py-24">
-            <div className="mx-auto max-w-5xl px-4 md:px-6">
+        <section className="">
+            <div className="border-t border-muted-foreground/20">
+            <div className="container border-x border-muted-foreground/20 py-16 md:py-24">
+            <div className="mx-auto max-w-5xl">
                 <div className="mx-auto max-w-xl text-center">
                     <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">Common Buyer Questions</h2>
                     <p className="text-muted-foreground mt-4 text-balance">Answers to the most common questions from importers about ordering, payment, shipping, and customisation.</p>
@@ -67,6 +69,8 @@ export default function FAQsTwo() {
                         </Link>
                     </p>
                 </div>
+            </div>
+            </div>
             </div>
         </section>
     )

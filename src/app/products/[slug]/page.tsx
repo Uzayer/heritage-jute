@@ -33,7 +33,8 @@ export default async function ProductDetailPage({
 
   return (
     <div>
-      <div className="container max-w-5xl py-12">
+      <div className="border-t border-muted-foreground/20">
+      <div className="container max-w-5xl border-x border-muted-foreground/20 py-12">
         <div className="mb-2 text-sm text-muted-foreground">
           <a href="/products" className="hover:underline">
             Products
@@ -54,6 +55,7 @@ export default async function ProductDetailPage({
             <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
+      </div>
       </div>
       <ProductSpecs2 title="Specifications" specGroups={product.specGroups} />
     </div>

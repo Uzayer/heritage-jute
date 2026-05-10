@@ -9,8 +9,9 @@ interface Feature97Props {
 
 const Feature97 = ({ className }: Feature97Props) => {
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container">
+    <section className={cn("", className)}>
+      <div className="border-t border-muted-foreground/20">
+      <div className="container border-x border-muted-foreground/20 py-32">
         <div className="mx-auto flex max-w-xl flex-col gap-6 text-center">
           <h2 className="text-4xl font-semibold">Why Partner with Heritage Jute</h2>
           <p className="text-lg">
@@ -70,6 +71,7 @@ const Feature97 = ({ className }: Feature97Props) => {
             </p>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
