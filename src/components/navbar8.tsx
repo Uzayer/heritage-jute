@@ -263,12 +263,20 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
               ))}
             </div>
             <div>
-              <div className="flex items-center justify-between p-4 leading-normal">
+              <div className="flex items-center gap-2 p-4 leading-normal">
                 <span className="font-bold">{item.title}</span>
                 {item.url && (
-                  <a href={item.url} className="text-sm font-medium text-muted-foreground hover:text-foreground">
-                    See All →
-                  </a>
+                  <>
+                    <span className="text-muted-foreground" aria-hidden="true">
+                      •
+                    </span>
+                    <a
+                      href={item.url}
+                      className="text-sm font-medium text-muted-foreground hover:text-foreground"
+                    >
+                      See All →
+                    </a>
+                  </>
                 )}
               </div>
               <ul>
