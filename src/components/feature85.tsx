@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/motion/reveal";
 
 const reasons = [
   {
@@ -77,27 +78,35 @@ const Feature85 = ({ className }: Feature85Props) => {
           <div className="relative container overflow-hidden border-x border-muted-foreground/20 py-32">
             <div className="isolate mx-auto flex max-w-3xl flex-col gap-20">
               <div className="bg absolute -top-1 -left-[1px] -z-10 h-full w-full bg-[linear-gradient(to_right,hsl(var(--muted-foreground))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground))_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_100%_120%_at_50%_50%,transparent_20%,#000_100%)] bg-[size:64px_64px] opacity-20 [clip-path:inset(0px_0px_50%_0px)]"></div>
-              <h2 className="text-center text-3xl md:text-5xl">
-                Our Jute Product Range
-              </h2>
-              <img
-                src="/images/gallery/Raw-Jute.webp"
-                alt="Raw jute fibre in graded bales — starting point for yarn, fabrics, bags, and rope"
-                className="max-h-64 w-full rounded-xl border border-border/60 bg-muted object-cover shadow-sm grayscale"
-              />
-              <p className="text-center text-xl md:text-3xl">
-                From raw fibre to finished bags — 11 product lines serving
-                importers across 31 countries.
-              </p>
+              <Reveal direction="none">
+                <h2 className="text-center text-3xl md:text-5xl">
+                  Our Jute Product Range
+                </h2>
+              </Reveal>
+              <Reveal direction="none" delay={0.05}>
+                <img
+                  src="/images/gallery/Raw-Jute.webp"
+                  alt="Raw jute fibre in graded bales — starting point for yarn, fabrics, bags, and rope"
+                  className="max-h-64 w-full rounded-xl border border-border/60 bg-muted object-cover shadow-sm grayscale"
+                />
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="text-center text-xl md:text-3xl">
+                  From raw fibre to finished bags — 11 product lines serving
+                  importers across 31 countries.
+                </p>
+              </Reveal>
             </div>
           </div>
           <div className="border-t border-muted-foreground/20">
             <div className="container border-x border-muted-foreground/20 px-0">
               <div className="grid gap-px bg-muted-foreground/20 md:grid-cols-2 lg:grid-cols-3">
                 {reasons.map((reason, i) => (
-                  <div
+                  <Reveal
                     key={i}
                     className="flex gap-4 bg-muted px-6 pt-8 pb-8 md:flex-col md:gap-0 md:px-8 md:pt-16"
+                    delay={i * 0.05}
+                    amount={0.2}
                   >
                     {reason.icon}
                     <div>
@@ -108,7 +117,7 @@ const Feature85 = ({ className }: Feature85Props) => {
                         {reason.description}
                       </p>
                     </div>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>

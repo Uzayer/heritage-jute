@@ -1,6 +1,7 @@
 'use client'
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Reveal } from '@/components/motion/reveal'
 import Link from 'next/link'
 
 export default function FAQsTwo() {
@@ -42,37 +43,41 @@ export default function FAQsTwo() {
             <div className="border-t border-muted-foreground/20">
             <div className="container border-x border-muted-foreground/20 py-16 md:py-24">
             <div className="mx-auto max-w-5xl">
-                <div className="mx-auto max-w-xl text-center">
+                <Reveal className="mx-auto max-w-xl text-center" direction="none">
                     <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">Common Buyer Questions</h2>
                     <p className="text-muted-foreground mt-4 text-balance">Answers to the most common questions from importers about ordering, payment, shipping, and customisation.</p>
-                </div>
+                </Reveal>
 
                 <div className="mx-auto mt-12 max-w-xl">
-                    <Accordion
-                        type="single"
-                        collapsible
-                        className="bg-card ring-muted w-full rounded-2xl border px-8 py-3 shadow-sm ring-4 dark:ring-0">
-                        {faqItems.map((item) => (
-                            <AccordionItem
-                                key={item.id}
-                                value={item.id}
-                                className="border-dashed">
-                                <AccordionTrigger className="cursor-pointer text-base hover:no-underline">{item.question}</AccordionTrigger>
-                                <AccordionContent>
-                                    <p className="text-base">{item.answer}</p>
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
+                    <Reveal direction="none">
+                        <Accordion
+                            type="single"
+                            collapsible
+                            className="bg-card ring-muted w-full rounded-2xl border px-8 py-3 shadow-sm ring-4 dark:ring-0">
+                            {faqItems.map((item) => (
+                                <AccordionItem
+                                    key={item.id}
+                                    value={item.id}
+                                    className="border-dashed">
+                                    <AccordionTrigger className="cursor-pointer text-base hover:no-underline">{item.question}</AccordionTrigger>
+                                    <AccordionContent>
+                                        <p className="text-base">{item.answer}</p>
+                                    </AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </Reveal>
 
-                    <p className="text-muted-foreground mt-6 px-8">
-                        Have a different question?{' '}
-                        <Link
-                            href="/contact"
-                            className="text-primary font-medium hover:underline">
-                            Send us an inquiry
-                        </Link>
-                    </p>
+                    <Reveal delay={0.05}>
+                        <p className="text-muted-foreground mt-6 px-8">
+                            Have a different question?{' '}
+                            <Link
+                                href="/contact"
+                                className="text-primary font-medium hover:underline">
+                                Send us an inquiry
+                            </Link>
+                        </p>
+                    </Reveal>
                 </div>
             </div>
             </div>

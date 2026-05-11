@@ -6,6 +6,7 @@ import {
 } from "@/components/kibo-ui/marquee";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/motion/reveal";
 
 interface About3Props {
   className?: string;
@@ -115,22 +116,27 @@ const About3 = ({
     <section className={cn("", className)}>
       <div className="border-muted-foreground/20">
       <div className="container border-x border-muted-foreground/20 py-32">
-        <div className="mb-14 flex flex-col gap-5 lg:w-2/3">
+        <Reveal className="mb-14 flex flex-col gap-5 lg:w-2/3" direction="none">
           <h1 className="text-5xl font-semibold tracking-tighter lg:text-6xl">
             {title}
           </h1>
           <p className="text-lg text-muted-foreground md:text-xl">
             {description}
           </p>
-        </div>
+        </Reveal>
         <div className="grid gap-7 lg:grid-cols-3">
-          <img
-            src={mainImage.src}
-            alt={mainImage.alt}
-            className="size-full max-h-[620px] rounded-xl object-cover lg:col-span-2"
-          />
+          <Reveal className="lg:col-span-2" direction="none" delay={0.05}>
+            <img
+              src={mainImage.src}
+              alt={mainImage.alt}
+              className="size-full max-h-[620px] rounded-xl object-cover"
+            />
+          </Reveal>
           <div className="flex flex-col gap-7 md:flex-row lg:flex-col">
-            <div className="flex flex-col justify-between gap-6 rounded-xl bg-muted p-7 md:w-1/2 lg:w-auto">
+            <Reveal
+              className="flex flex-col justify-between gap-6 rounded-xl bg-muted p-7 md:w-1/2 lg:w-auto"
+              delay={0.1}
+            >
               <img
                 src={breakout.src}
                 alt={breakout.alt}
@@ -153,12 +159,14 @@ const About3 = ({
                   {breakout.buttonText}
                 </a>
               </Button>
-            </div>
-            <img
-              src={secondaryImage.src}
-              alt={secondaryImage.alt}
-              className="grow basis-0 rounded-xl object-cover md:w-1/2 lg:min-h-0 lg:w-auto"
-            />
+            </Reveal>
+            <Reveal className="md:w-1/2 lg:min-h-0 lg:w-auto" direction="none" delay={0.15}>
+              <img
+                src={secondaryImage.src}
+                alt={secondaryImage.alt}
+                className="grow basis-0 rounded-xl object-cover"
+              />
+            </Reveal>
           </div>
         </div>
         {companies && (
@@ -183,7 +191,7 @@ const About3 = ({
             </Marquee>
           </div>
         )}
-        <div className="relative overflow-hidden rounded-xl bg-muted p-7 md:p-16">
+        <Reveal className="relative overflow-hidden rounded-xl bg-muted p-7 md:p-16" direction="none">
           <div className="flex flex-col gap-4 text-center md:text-left">
             <h2 className="text-3xl font-medium md:text-4xl">
               {achievementsTitle}
@@ -205,16 +213,16 @@ const About3 = ({
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
         {contentSections && contentSections.length > 0 && (
           <div className="mx-auto grid max-w-5xl gap-16 py-28 md:grid-cols-2 md:gap-28">
             {contentSections.map((section, idx) => (
-              <div key={section.title + idx}>
+              <Reveal key={section.title + idx} delay={idx * 0.05}>
                 <h2 className="mb-5 text-4xl font-medium">{section.title}</h2>
                 <p className="text-lg leading-7 whitespace-pre-line text-muted-foreground">
                   {section.content}
                 </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         )}

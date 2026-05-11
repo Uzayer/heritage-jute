@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/motion/reveal";
 
 interface FeatureCardListItem {
   title: string;
@@ -136,7 +137,7 @@ const Feature73 = (props: Props) => {
     <section className={cn("", className)}>
       <div className="border-muted-foreground/20">
       <div className="container mx-auto border-x border-muted-foreground/20 py-32">
-        <div className="mb-9 lg:mb-14 lg:max-w-3xl">
+        <Reveal className="mb-9 lg:mb-14 lg:max-w-3xl" direction="none">
           <h2 className="mb-3 text-3xl font-semibold tracking-tight text-balance md:mb-4 md:text-4xl lg:mb-6">
             {heading}
           </h2>
@@ -156,12 +157,13 @@ const Feature73 = (props: Props) => {
               </a>
             </Button>
           )}
-        </div>
+        </Reveal>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features?.map((feature, i) => (
-            <div
+            <Reveal
               key={i}
               className="flex flex-col overflow-clip rounded-xl border border-border"
+              delay={i * 0.05}
             >
               <a href={feature.href}>
                 <img
@@ -185,7 +187,7 @@ const Feature73 = (props: Props) => {
                   </Button>
                 )}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

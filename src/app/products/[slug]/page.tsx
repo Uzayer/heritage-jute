@@ -6,6 +6,7 @@ import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { ProductSpecs2 } from "@/components/product-specs2";
 import { defaultOgImage } from "@/lib/site";
+import { Reveal } from "@/components/motion/reveal";
 
 export async function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -56,14 +57,14 @@ export default async function ProductDetailPage({
     <div>
       <div className="border-muted-foreground/20">
         <div className="container max-w-5xl border-x border-muted-foreground/20 py-12">
-          <div className="mb-2 text-sm text-muted-foreground">
-            <a href="/products" className="hover:underline">
-              Products
-            </a>{" "}
-            / {product.category}
-          </div>
           <div className="grid gap-8 md:grid-cols-2 md:items-center">
-            <div>
+            <Reveal direction="none">
+              <div className="mb-2 text-sm text-muted-foreground">
+                <a href="/products" className="hover:underline">
+                  Products
+                </a>{" "}
+                / {product.category}
+              </div>
               <h1 className="text-4xl font-semibold tracking-tight">
                 {product.name}
               </h1>
@@ -84,8 +85,12 @@ export default async function ProductDetailPage({
                   <Link href="/contact">Contact Us</Link>
                 </Button>
               </div>
-            </div>
-            <div className="relative aspect-4/3 overflow-hidden rounded-xl border border-border bg-muted">
+            </Reveal>
+            <Reveal
+              className="relative aspect-4/3 overflow-hidden rounded-xl border border-border bg-muted"
+              direction="none"
+              delay={0.05}
+            >
               <Image
                 src={product.image.src}
                 alt={product.image.alt}
@@ -94,7 +99,7 @@ export default async function ProductDetailPage({
                 className="object-cover"
                 priority
               />
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>

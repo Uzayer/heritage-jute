@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { Reveal } from '@/components/motion/reveal'
 import Link from 'next/link'
 
 interface CallToActionProps {
@@ -22,10 +23,12 @@ export default function CallToAction({
         <section className="py-16">
             <div className="mx-auto max-w-5xl rounded-3xl border px-6 py-12 md:py-20 lg:py-32">
                 <div className="text-center">
-                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">{heading}</h2>
-                    <p className="mt-4">{description}</p>
+                    <Reveal direction="none">
+                        <h2 className="text-balance text-4xl font-semibold lg:text-5xl">{heading}</h2>
+                        <p className="mt-4">{description}</p>
+                    </Reveal>
 
-                    <div className="mt-12 flex flex-wrap justify-center gap-4">
+                    <Reveal className="mt-12 flex flex-wrap justify-center gap-4" direction="none" delay={0.05}>
                         <Button
                             asChild
                             size="lg">
@@ -42,7 +45,7 @@ export default function CallToAction({
                                 <span>{secondaryLabel}</span>
                             </Link>
                         </Button>
-                    </div>
+                    </Reveal>
                 </div>
             </div>
         </section>

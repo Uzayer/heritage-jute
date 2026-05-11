@@ -1,5 +1,6 @@
 import { DottedGlowBackground } from "@/components/ui/dotted-glow-background";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/motion/reveal";
 
 interface Feature {
   title: string;
@@ -99,41 +100,52 @@ const Compliance7 = ({
 
           <div className="flex flex-col">
             <div className="border border-dashed bg-gradient-to-b from-foreground/10 to-background p-10 sm:p-20">
-              <FeatureItem title={heading} description={description} />
+              <Reveal direction="none">
+                <FeatureItem title={heading} description={description} />
+              </Reveal>
             </div>
             <div className="grid gap-10 border border-t-0 border-dashed p-10 sm:p-20 md:grid-cols-2">
               {features.map((feature) => (
-                <FeatureItem
+                <Reveal
                   key={feature.title}
-                  title={feature.title}
-                  description={feature.description}
-                />
+                  direction="up"
+                  amount={0.2}
+                >
+                  <FeatureItem
+                    title={feature.title}
+                    description={feature.description}
+                  />
+                </Reveal>
               ))}
             </div>
           </div>
           <div className="flex h-full flex-col items-center justify-center gap-20 border border-l-0 border-dashed bg-gradient-to-tr from-foreground/10 to-background to-30% p-10 sm:p-20 dark:from-foreground/20">
-            <div className="flex items-center gap-4 sm:gap-10">
-              {certifications.map((certification) => {
-                return (
-                  <div
-                    key={certification.src}
-                    className="flex items-center justify-center"
-                  >
-                    <img
-                      src={certification.src}
-                      alt={certification.alt}
-                      className="size-36 object-contain sm:size-44"
-                    />
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex flex-col gap-2 text-center">
-              <p className="text-4xl font-semibold">{complianceHeading}</p>
-              <p className="font-medium text-muted-foreground">
-                {complianceDescription}
-              </p>
-            </div>
+            <Reveal direction="none">
+              <div className="flex items-center gap-4 sm:gap-10">
+                {certifications.map((certification) => {
+                  return (
+                    <div
+                      key={certification.src}
+                      className="flex items-center justify-center"
+                    >
+                      <img
+                        src={certification.src}
+                        alt={certification.alt}
+                        className="size-36 object-contain sm:size-44"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <div className="flex flex-col gap-2 text-center">
+                <p className="text-4xl font-semibold">{complianceHeading}</p>
+                <p className="font-medium text-muted-foreground">
+                  {complianceDescription}
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>

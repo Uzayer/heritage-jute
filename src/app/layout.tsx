@@ -6,6 +6,7 @@ import { Navbar8 } from "@/components/navbar8";
 import { Footer7 } from "@/components/footer7";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { siteUrl, defaultOgImage } from "@/lib/site";
+import { MotionProvider } from "@/components/motion/motion-provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -110,7 +111,9 @@ export default function RootLayout({
           }}
         />
         <Navbar8 />
-        <main className="flex-1 pt-24">{children}</main>
+        <MotionProvider>
+          <main className="flex-1 pt-24">{children}</main>
+        </MotionProvider>
         <Footer7 />
         <SpeedInsights />
       </body>

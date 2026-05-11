@@ -13,6 +13,7 @@ import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/motion/reveal";
 import {
   Field,
   FieldError,
@@ -166,88 +167,96 @@ const Contact11 = (props: Props) => {
     <section className={cn("py-32", className)}>
       <div className="container mx-auto">
         <div className="mx-auto max-w-5xl">
-          <div className="flex flex-col gap-4 text-left">
+          <Reveal className="flex flex-col gap-4 text-left" direction="none">
             <h1 className="text-3xl font-semibold tracking-tight text-pretty sm:text-4xl lg:text-5xl">
               {title}
             </h1>
             <p className="text-muted-foreground lg:text-xl lg:text-balance">
               {description}
             </p>
-          </div>
+          </Reveal>
 
           <div className="mt-10 flex gap-10 max-md:flex-col md:mt-16 md:gap-0 md:divide-x md:divide-border">
             <div className="space-y-10 md:pr-10">
-              <div>
-                <h2 className="text-lg font-semibold tracking-tight text-balance">
-                  {corporateHeading}
-                </h2>
-                <p className="mt-3 font-medium tracking-tight text-muted-foreground">
-                  {addressLine1}
-                  <br />
-                  {addressLine2}
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-lg font-semibold tracking-tight text-balance">
-                  {contactHeading}
-                </h2>
-                <div className="mt-3 flex flex-col gap-6">
-                  <a
-                    href={`tel:${phone}`}
-                    className="group flex items-center gap-3 font-medium tracking-tight text-muted-foreground hover:text-foreground"
-                  >
-                    <PhoneIcon className="size-5 shrink-0 text-muted-foreground" />
-                    <span className="group-hover:underline">{phone}</span>
-                  </a>
-                  <a
-                    href={`mailto:${email}`}
-                    className="group flex items-center gap-3 font-medium tracking-tight text-muted-foreground hover:text-foreground"
-                  >
-                    <MailIcon className="size-5 shrink-0 text-muted-foreground" />
-                    <span className="group-hover:underline">{email}</span>
-                  </a>
-                  <a
-                    href={web.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${web.label} (opens in new tab)`}
-                    className="group flex items-center gap-3 font-medium tracking-tight text-muted-foreground hover:text-foreground"
-                  >
-                    <GlobeIcon className="size-5 shrink-0 text-muted-foreground" />
-                    <span className="group-hover:underline">{web.label}</span>
-                  </a>
+              <Reveal direction="none" delay={0.05}>
+                <div>
+                  <h2 className="text-lg font-semibold tracking-tight text-balance">
+                    {corporateHeading}
+                  </h2>
+                  <p className="mt-3 font-medium tracking-tight text-muted-foreground">
+                    {addressLine1}
+                    <br />
+                    {addressLine2}
+                  </p>
                 </div>
-              </div>
+              </Reveal>
 
-              <div>
-                <h2 className="text-lg font-semibold tracking-tight text-balance">
-                  {socialHeading}
-                </h2>
-                <div className="mt-3 flex gap-6">
-                  {socialLinks.map((link) => {
-                    const Icon = SOCIAL_ICON[link.network];
-                    return (
-                      <a
-                        key={`${link.network}-${link.url}`}
-                        href={link.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`${SOCIAL_LABEL[link.network]} (opens in new tab)`}
-                        className="text-muted-foreground hover:text-foreground"
-                      >
-                        <Icon className="size-6" aria-hidden />
-                      </a>
-                    );
-                  })}
+              <Reveal delay={0.1}>
+                <div>
+                  <h2 className="text-lg font-semibold tracking-tight text-balance">
+                    {contactHeading}
+                  </h2>
+                  <div className="mt-3 flex flex-col gap-6">
+                    <a
+                      href={`tel:${phone}`}
+                      className="group flex items-center gap-3 font-medium tracking-tight text-muted-foreground hover:text-foreground"
+                    >
+                      <PhoneIcon className="size-5 shrink-0 text-muted-foreground" />
+                      <span className="group-hover:underline">{phone}</span>
+                    </a>
+                    <a
+                      href={`mailto:${email}`}
+                      className="group flex items-center gap-3 font-medium tracking-tight text-muted-foreground hover:text-foreground"
+                    >
+                      <MailIcon className="size-5 shrink-0 text-muted-foreground" />
+                      <span className="group-hover:underline">{email}</span>
+                    </a>
+                    <a
+                      href={web.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${web.label} (opens in new tab)`}
+                      className="group flex items-center gap-3 font-medium tracking-tight text-muted-foreground hover:text-foreground"
+                    >
+                      <GlobeIcon className="size-5 shrink-0 text-muted-foreground" />
+                      <span className="group-hover:underline">{web.label}</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
+
+              <Reveal delay={0.15}>
+                <div>
+                  <h2 className="text-lg font-semibold tracking-tight text-balance">
+                    {socialHeading}
+                  </h2>
+                  <div className="mt-3 flex gap-6">
+                    {socialLinks.map((link) => {
+                      const Icon = SOCIAL_ICON[link.network];
+                      return (
+                        <a
+                          key={`${link.network}-${link.url}`}
+                          href={link.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${SOCIAL_LABEL[link.network]} (opens in new tab)`}
+                          className="text-muted-foreground hover:text-foreground"
+                        >
+                          <Icon className="size-6" aria-hidden />
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              </Reveal>
             </div>
 
             <div className="flex-1 md:pl-10">
-              <h2 className="text-lg font-semibold tracking-tight text-balance">
-                {formHeading}
-              </h2>
+              <Reveal direction="none" delay={0.05}>
+                <h2 className="text-lg font-semibold tracking-tight text-balance">
+                  {formHeading}
+                </h2>
+              </Reveal>
 
               {isSubmitted && (
                 <div

@@ -1,15 +1,18 @@
+import { Reveal } from "@/components/motion/reveal"
+
 export default function StatsSection() {
     return (
         <section className="">
             <div className="border-t border-muted-foreground/20">
             <div className="mx-auto max-w-5xl border-x border-muted-foreground/20 py-16 md:py-32 px-6 space-y-8 md:space-y-12">
-                <div className="relative z-10 max-w-xl space-y-6">
+                <Reveal className="relative z-10 max-w-xl space-y-6" direction="none">
                     <h2 className="text-4xl font-medium lg:text-5xl">Heritage Jute in numbers</h2>
                     <p>
                         A decade of consistent export operations — direct mill sourcing, government-verified credentials, and buyers across <span className="font-medium">six continents</span>.
                     </p>
-                </div>
+                </Reveal>
                 <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
+                    <Reveal delay={0.05}>
                     <div>
                         <p>From raw jute fibre to finished export bags — reliable supply at factory pricing, shipped FOB Chittagong or CIF to your port.</p>
                         <div className="mb-12 mt-12 grid grid-cols-2 gap-2 md:mb-0">
@@ -23,7 +26,8 @@ export default function StatsSection() {
                             </div>
                         </div>
                     </div>
-                    <div className="relative">
+                    </Reveal>
+                    <Reveal className="relative" delay={0.1}>
                         <blockquote className="border-l-4 pl-4">
                             <p>Heritage Jute&apos;s documentation and shipping terms were exactly as described. The quality was consistent across both container loads — we&apos;ve made them our primary jute supplier.</p>
                             <div className="mt-6 space-y-1">
@@ -31,7 +35,7 @@ export default function StatsSection() {
                                 <p className="text-sm text-muted-foreground">European packaging distributor</p>
                             </div>
                         </blockquote>
-                    </div>
+                    </Reveal>
                 </div>
             </div>
             </div>

@@ -7,6 +7,7 @@ import { ScrollableTabsList } from "@/components/shadcnblocks/scrollable-tabslis
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/motion/reveal";
 
 interface Spec {
   label: string;
@@ -133,10 +134,13 @@ const ProductSpecs2 = ({
       <div className="border-t border-muted-foreground/20">
       <div className="container max-w-5xl border-x border-muted-foreground/20 py-16 md:py-24">
         {/* Header */}
-        <h2 className="mb-8 text-2xl font-semibold tracking-tight md:text-3xl">
-          {title}
-        </h2>
+        <Reveal direction="none">
+          <h2 className="mb-8 text-2xl font-semibold tracking-tight md:text-3xl">
+            {title}
+          </h2>
+        </Reveal>
 
+        <Reveal direction="none" delay={0.05}>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <ScrollableTabsList className="rounded-none">
             <TabsList className="inline-flex w-auto overflow-y-hidden">
@@ -183,22 +187,25 @@ const ProductSpecs2 = ({
             </TabsContent>
           ))}
         </Tabs>
+        </Reveal>
 
         {/* Quick Specs Summary */}
-        <div className="mt-8 rounded-lg bg-muted/30 p-6">
-          <h3 className="mb-4 font-medium">Key Highlights</h3>
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-            {specGroups[0]?.specs
-              .filter((s) => s.highlight)
-              .slice(0, 4)
-              .map((spec, index) => (
-                <div key={index}>
-                  <p className="text-sm text-muted-foreground">{spec.label}</p>
-                  <p className="font-semibold">{spec.value as string}</p>
-                </div>
-              ))}
+        <Reveal className="mt-8" delay={0.1}>
+          <div className="rounded-lg bg-muted/30 p-6">
+            <h3 className="mb-4 font-medium">Key Highlights</h3>
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+              {specGroups[0]?.specs
+                .filter((s) => s.highlight)
+                .slice(0, 4)
+                .map((spec, index) => (
+                  <div key={index}>
+                    <p className="text-sm text-muted-foreground">{spec.label}</p>
+                    <p className="font-semibold">{spec.value as string}</p>
+                  </div>
+                ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
       </div>
     </section>
