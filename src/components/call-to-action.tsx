@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Reveal } from '@/components/motion/reveal'
+import { MotionCta } from '@/components/motion/cta-motion'
 import Link from 'next/link'
 
 interface CallToActionProps {
@@ -29,22 +30,26 @@ export default function CallToAction({
                     </Reveal>
 
                     <Reveal className="mt-12 flex flex-wrap justify-center gap-4" direction="none" delay={0.05}>
-                        <Button
-                            asChild
-                            size="lg">
-                            <Link href={primaryHref}>
-                                <span>{primaryLabel}</span>
-                            </Link>
-                        </Button>
+                        <MotionCta>
+                            <Button
+                                asChild
+                                size="lg">
+                                <Link href={primaryHref}>
+                                    <span>{primaryLabel}</span>
+                                </Link>
+                            </Button>
+                        </MotionCta>
 
-                        <Button
-                            asChild
-                            size="lg"
-                            variant="outline">
-                            <Link href={secondaryHref}>
-                                <span>{secondaryLabel}</span>
-                            </Link>
-                        </Button>
+                        <MotionCta>
+                            <Button
+                                asChild
+                                size="lg"
+                                variant="outline">
+                                <Link href={secondaryHref}>
+                                    <span>{secondaryLabel}</span>
+                                </Link>
+                            </Button>
+                        </MotionCta>
                     </Reveal>
                 </div>
             </div>

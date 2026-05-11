@@ -158,12 +158,14 @@ const Feature73 = (props: Props) => {
             </Button>
           )}
         </Reveal>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Reveal
+          stagger={0.07}
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
           {features?.map((feature, i) => (
-            <Reveal
+            <div
               key={i}
               className="flex flex-col overflow-clip rounded-xl border border-border"
-              delay={i * 0.05}
             >
               <a href={feature.href}>
                 <img
@@ -187,9 +189,9 @@ const Feature73 = (props: Props) => {
                   </Button>
                 )}
               </div>
-            </Reveal>
+            </div>
           ))}
-        </div>
+        </Reveal>
       </div>
       </div>
     </section>

@@ -2,6 +2,8 @@
 import { Menu, X } from "lucide-react";
 import type { Dispatch, SetStateAction } from "react";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -41,6 +43,7 @@ interface MobileNavigationMenuProps {
 interface DesktopMenuItemProps {
   item: MenuItem;
   index: number;
+  pathname: string;
 }
 
 const LOGO = {
@@ -147,6 +150,7 @@ interface Navbar8Props {
 
 const Navbar8 = ({ className }: Navbar8Props) => {
   const [open, setOpen] = useState<boolean>(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleResize = () => {
@@ -190,6 +194,7 @@ const Navbar8 = ({ className }: Navbar8Props) => {
                     key={`desktop-link-${index}`}
                     item={item}
                     index={index}
+                    pathname={pathname}
                   />
                 ))}
               </NavigationMenuList>
@@ -218,8 +223,10 @@ const Navbar8 = ({ className }: Navbar8Props) => {
   );
 };
 
-const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
+const DesktopMenuItem = ({ item, index, pathname }: DesktopMenuItemProps) => {
   const imagesRef = useRef<HTMLImageElement[]>([]);
+  const productsActive =
+    item.links !== undefined && pathname.startsWith("/products");
 
   const handleMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
     const index = Number(event.currentTarget.getAttribute("data-index"));
@@ -242,8 +249,15 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
   if (item.links) {
     return (
       <NavigationMenuItem key={`desktop-menu-item-${index}`} value={`${index}`}>
-        <NavigationMenuTrigger className="bg-transparent">
-          {item.title}
+        <NavigationMenuTrigger className="relative bg-transparent">
+          <span className="relative z-10">{item.title}</span>
+          {productsActive && (
+            <motion.span
+              layoutId="nav-indicator"
+              className="pointer-events-none absolute inset-x-3 bottom-0 h-0.5 rounded-full bg-primary"
+              transition={{ type: "spring", stiffness: 400, damping: 32 }}
+            />
+          )}
         </NavigationMenuTrigger>
         <NavigationMenuContent className="!rounded-2xl !p-0">
           <div className="grid min-h-[18.75rem] w-[45.25rem] grid-cols-[22.5rem_1fr] gap-4 p-3">
@@ -263,20 +277,22 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
               ))}
             </div>
             <div>
-              <div className="flex items-center gap-2 p-4 leading-normal">
-                <span className="font-bold">{item.title}</span>
-                {item.url && (
-                  <>
+              <div className="p-4 leading-normal">
+                {item.url ? (
+                  <a
+                    href={item.url}
+                    className="inline-flex items-center gap-2 text-foreground hover:text-foreground/80"
+                  >
+                    <span className="font-bold">{item.title}</span>
                     <span className="text-muted-foreground" aria-hidden="true">
                       •
                     </span>
-                    <a
-                      href={item.url}
-                      className="text-sm font-medium text-muted-foreground hover:text-foreground"
-                    >
+                    <span className="text-sm font-medium text-muted-foreground">
                       See All →
-                    </a>
-                  </>
+                    </span>
+                  </a>
+                ) : (
+                  <span className="font-bold">{item.title}</span>
                 )}
               </div>
               <ul>
@@ -308,13 +324,30 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
     );
   }
 
+  const linkActive =
+    item.url !== undefined &&
+    (pathname === item.url ||
+      (item.url !== "/" && pathname.startsWith(`${item.url}/`)));
+
   return (
     <NavigationMenuItem
       key={`desktop-menu-item-${index}`}
       value={`${index}`}
       className={`${navigationMenuTriggerStyle()} bg-transparent`}
     >
-      <NavigationMenuLink href={item.url}>{item.title}</NavigationMenuLink>
+      <NavigationMenuLink
+        href={item.url!}
+        className="relative flex h-full w-full items-center justify-center px-4 py-2"
+      >
+        <span className="relative z-10">{item.title}</span>
+        {linkActive && (
+          <motion.span
+            layoutId="nav-indicator"
+            className="pointer-events-none absolute inset-x-3 bottom-0 h-0.5 rounded-full bg-primary"
+            transition={{ type: "spring", stiffness: 400, damping: 32 }}
+          />
+        )}
+      </NavigationMenuLink>
     </NavigationMenuItem>
   );
 };

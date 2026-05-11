@@ -100,13 +100,14 @@ const Feature85 = ({ className }: Feature85Props) => {
           </div>
           <div className="border-t border-muted-foreground/20">
             <div className="container border-x border-muted-foreground/20 px-0">
-              <div className="grid gap-px bg-muted-foreground/20 md:grid-cols-2 lg:grid-cols-3">
+              <Reveal
+                stagger={0.06}
+                className="grid gap-px bg-muted-foreground/20 md:grid-cols-2 lg:grid-cols-3"
+              >
                 {reasons.map((reason, i) => (
-                  <Reveal
+                  <div
                     key={i}
                     className="flex gap-4 bg-muted px-6 pt-8 pb-8 md:flex-col md:gap-0 md:px-8 md:pt-16"
-                    delay={i * 0.05}
-                    amount={0.2}
                   >
                     {reason.icon}
                     <div>
@@ -117,9 +118,9 @@ const Feature85 = ({ className }: Feature85Props) => {
                         {reason.description}
                       </p>
                     </div>
-                  </Reveal>
+                  </div>
                 ))}
-              </div>
+              </Reveal>
             </div>
           </div>
           <div>

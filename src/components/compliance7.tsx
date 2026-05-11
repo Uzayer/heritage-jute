@@ -104,20 +104,19 @@ const Compliance7 = ({
                 <FeatureItem title={heading} description={description} />
               </Reveal>
             </div>
-            <div className="grid gap-10 border border-t-0 border-dashed p-10 sm:p-20 md:grid-cols-2">
+            <Reveal
+              stagger={0.06}
+              className="grid gap-10 border border-t-0 border-dashed p-10 sm:p-20 md:grid-cols-2"
+            >
               {features.map((feature) => (
-                <Reveal
-                  key={feature.title}
-                  direction="up"
-                  amount={0.2}
-                >
+                <div key={feature.title}>
                   <FeatureItem
                     title={feature.title}
                     description={feature.description}
                   />
-                </Reveal>
+                </div>
               ))}
-            </div>
+            </Reveal>
           </div>
           <div className="flex h-full flex-col items-center justify-center gap-20 border border-l-0 border-dashed bg-gradient-to-tr from-foreground/10 to-background to-30% p-10 sm:p-20 dark:from-foreground/20">
             <Reveal direction="none">

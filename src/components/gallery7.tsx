@@ -75,8 +75,12 @@ const Gallery7 = ({ className }: Gallery7Props) => {
       aria-labelledby="gallery7-heading"
     >
       <div className="container border-x border-muted-foreground/20 px-6 py-10 md:py-14">
-        <div className="mb-10 grid grid-cols-1 gap-6 md:mb-12 md:grid-cols-2 md:gap-x-12 md:gap-y-4">
-          <Reveal className="flex flex-col gap-6" direction="none">
+        <Reveal
+          className="mb-10 grid grid-cols-1 gap-6 md:mb-12 md:grid-cols-2 md:gap-x-12 md:gap-y-4"
+          stagger={0.08}
+          direction="none"
+        >
+          <div className="flex flex-col gap-6">
             <h2
               id="gallery7-heading"
               className="text-2xl font-semibold tracking-tight md:text-3xl"
@@ -89,14 +93,14 @@ const Gallery7 = ({ className }: Gallery7Props) => {
             >
               Browse our catalog <MoveRight className="ml-2 inline size-5" />
             </Link>
-          </Reveal>
-          <Reveal delay={0.05}>
+          </div>
+          <div>
             <p className="text-sm text-muted-foreground md:text-base">
               From raw fibre to yarn, fabrics, bags, and rope — a snapshot of the
               range we export to buyers worldwide.
             </p>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
         <div className="-mx-6 max-w-[100vw] overflow-x-hidden md:-mx-6">
           <Carousel
             opts={{
