@@ -1,7 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { Children, isValidElement } from "react";
+import {
+  motion,
+  useInView,
+  useReducedMotion,
+  type Variants,
+} from "framer-motion";
 
 type RevealDirection = "up" | "down" | "left" | "right" | "none";
 
@@ -29,6 +35,11 @@ export interface RevealProps {
    */
   once?: boolean;
   /**
+   * When true, allow the animation to replay when the section re-enters the
+   * viewport (sets `viewport.once` to false).
+   */
+  replay?: boolean;
+  /**
    * How much of the element should be visible before triggering.
    * Use a number (0..1) or `"some"` / `"all"`.
    */
@@ -37,7 +48,18 @@ export interface RevealProps {
    * Root margin for viewport trigger, e.g. `"-80px 0px"`.
    */
   margin?: string;
+  /**
+   * When set (> 0), each direct child is wrapped with staggered motion using
+   * `staggerChildren` (seconds between children).
+   */
+  stagger?: number;
+  /**
+   * Extra delay before the stagger sequence starts (seconds).
+   */
+  staggerDelay?: number;
 }
+
+type UseInViewOptions = NonNullable<Parameters<typeof useInView>[1]>;
 
 function getOffset(direction: RevealDirection, distance: number) {
   switch (direction) {
@@ -63,16 +85,72 @@ export function Reveal({
   delay = 0,
   duration = 0.5,
   once = true,
-  amount = 0.25,
+  replay = false,
+  amount = "some",
   margin = "-80px 0px",
+  stagger,
+  staggerDelay = 0,
 }: RevealProps) {
+  const rootRef = React.useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const viewportOnce = replay ? false : once;
+  const isInView = useInView(rootRef, {
+    once: viewportOnce,
+    amount,
+    margin: margin as UseInViewOptions["margin"],
+  });
+  const useStagger =
+    typeof stagger === "number" && stagger > 0 && !shouldReduceMotion;
 
   if (shouldReduceMotion) {
     return <div className={className}>{children}</div>;
   }
 
   const offset = getOffset(direction, distance);
+  const ease = [0.21, 0.47, 0.32, 0.98] as const;
+
+  if (useStagger) {
+    const containerVariants: Variants = {
+      hidden: {},
+      show: {
+        transition: {
+          staggerChildren: stagger,
+          delayChildren: staggerDelay + delay,
+        },
+      },
+    };
+
+    const itemVariants: Variants = {
+      hidden: { opacity: 0, ...offset },
+      show: {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        transition: { duration, ease },
+      },
+    };
+
+    return (
+      <motion.div
+        ref={rootRef}
+        className={className}
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "show" : "hidden"}
+      >
+        {Children.map(children, (child, index) => {
+          const key = isValidElement(child) && child.key != null
+            ? String(child.key)
+            : `reveal-stagger-${index}`;
+          return (
+            <motion.div key={key} variants={itemVariants}>
+              {child}
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    );
+  }
 
   const variants: Variants = {
     hidden: { opacity: 0, ...offset },
@@ -81,15 +159,14 @@ export function Reveal({
 
   return (
     <motion.div
+      ref={rootRef}
       className={className}
       variants={variants}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once, amount, margin }}
-      transition={{ duration, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+      animate={isInView ? "show" : "hidden"}
+      transition={{ duration, delay, ease }}
     >
       {children}
     </motion.div>
   );
 }
-
