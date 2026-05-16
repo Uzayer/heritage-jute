@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Accordion as AccordionPrimitive } from "radix-ui";
 import { ChevronDown } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 
 import {
   Accordion,

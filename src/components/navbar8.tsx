@@ -2,7 +2,7 @@
 import { Menu, X } from "lucide-react";
 import type { Dispatch, SetStateAction } from "react";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";

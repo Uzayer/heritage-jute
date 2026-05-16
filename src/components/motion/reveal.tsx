@@ -7,7 +7,7 @@ import {
   useInView,
   useReducedMotion,
   type Variants,
-} from "framer-motion";
+} from "motion/react";
 
 type RevealDirection = "up" | "down" | "left" | "right" | "none";
 
