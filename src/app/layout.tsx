@@ -38,6 +38,12 @@ const organizationLd = {
     postalCode: "1230",
     addressCountry: "BD",
   },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+8801841111625",
+    contactType: "sales",
+    availableLanguage: ["English", "Bengali"],
+  },
 };
 
 export const metadata: Metadata = {

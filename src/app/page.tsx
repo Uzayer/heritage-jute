@@ -6,14 +6,29 @@ import ContentSection from "@/components/content-4";
 import { Compliance7 } from "@/components/compliance7";
 import FAQsTwo from "@/components/faqs-2";
 import CallToAction from "@/components/call-to-action";
+import { faqItems } from "@/lib/faqs";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
       <Hero249 />
       <Feature85 />
       <StatsSection />

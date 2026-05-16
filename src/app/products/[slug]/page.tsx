@@ -5,7 +5,7 @@ import Link from "next/link";
 import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { ProductSpecs2 } from "@/components/product-specs2";
-import { defaultOgImage } from "@/lib/site";
+import { defaultOgImage, siteUrl } from "@/lib/site";
 import { Reveal } from "@/components/motion/reveal";
 
 export async function generateStaticParams() {
@@ -53,8 +53,22 @@ export default async function ProductDetailPage({
   const product = products.find((p) => p.slug === slug);
   if (!product) notFound();
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Products", item: `${siteUrl}/products` },
+      { "@type": "ListItem", position: 3, name: product.name, item: `${siteUrl}/products/${product.slug}` },
+    ],
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       <div className="border-muted-foreground/20">
         <div className="container max-w-5xl border-x border-muted-foreground/20 py-12">
           <div className="grid gap-8 md:grid-cols-2 md:items-center">
