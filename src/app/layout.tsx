@@ -33,9 +33,9 @@ const organizationLd = {
   description: siteDescription,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "House 36, 1st Floor, Road 10, Nikunja-02",
+    streetAddress: "House 39, Flat 3-B, Road 12, Sector 10, Uttara Model Town",
     addressLocality: "Dhaka",
-    postalCode: "1229",
+    postalCode: "1230",
     addressCountry: "BD",
   },
 };

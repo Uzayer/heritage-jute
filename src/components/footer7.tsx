@@ -13,8 +13,8 @@ const Footer7 = ({ className }: { className?: string }) => {
               Established 2014. Supplying 31 countries across 6 continents.
             </p>
             <address className="not-italic space-y-1 text-sm text-muted-foreground">
-              <p>House 36, 1st Floor, Road 10</p>
-              <p>Nikunja-02, Dhaka-1229, Bangladesh</p>
+              <p>House 39, Flat 3-B, Road 12, Sector 10</p>
+              <p>Uttara Model Town, Dhaka-1230, Bangladesh</p>
               <p>+880 1841-111625</p>
               <p>info@heritagejute.com</p>
             </address>

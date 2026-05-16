@@ -91,9 +91,9 @@ const Contact10 = ({ className, onSubmit }: Contact10Props) => {
           <div>
             <h2 className="font-semibold">Office</h2>
             <p className="mt-3 text-muted-foreground">
-              House 36, 1st Floor, Road 10
+              House 39, Flat 3-B, Road 12, Sector 10
               <br />
-              Nikunja-02, Dhaka-1229, Bangladesh
+              Uttara Model Town, Dhaka-1230, Bangladesh
             </p>
           </div>
 

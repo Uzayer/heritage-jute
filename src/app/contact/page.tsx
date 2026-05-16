@@ -6,7 +6,7 @@ import { defaultOgImage } from "@/lib/site";
 
 const ogTitle = "Contact Heritage Jute Fibers — Send an Inquiry";
 const ogDescription =
-  "Get in touch with Heritage Jute Fibers. Send an inquiry, WhatsApp us, or call. House 36, Road 10, Nikunja-02, Dhaka-1229, Bangladesh.";
+  "Get in touch with Heritage Jute Fibers. Send an inquiry, WhatsApp us, or call. House 39, Flat 3-B, Road 12, Sector 10, Uttara Model Town, Dhaka-1230, Bangladesh.";
 
 export const metadata: Metadata = {
   title: ogTitle,
@@ -31,8 +31,8 @@ export default function ContactPage() {
       title="Contact Heritage Jute Fibers"
       description="Ready to source jute? Send us your product requirements and we'll respond within one business day. For urgent inquiries, WhatsApp is fastest."
       corporateHeading="Office"
-      addressLine1="House 36, 1st Floor, Road 10"
-      addressLine2="Nikunja-02, Dhaka-1229, Bangladesh"
+      addressLine1="House 39, Flat 3-B, Road 12, Sector 10"
+      addressLine2="Uttara Model Town, Dhaka-1230, Bangladesh"
       contactHeading="Get in touch"
       phone="+880 1841-111625"
       email="info@heritagejute.com"
