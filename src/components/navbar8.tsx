@@ -184,6 +184,8 @@ const Navbar8 = ({ className }: Navbar8Props) => {
               <img
                 src={LOGO.src}
                 alt={LOGO.alt}
+                width={1500}
+                height={200}
                 className="h-11 w-auto sm:h-12"
               />
             </a>

@@ -87,6 +87,8 @@ const Feature85 = ({ className }: Feature85Props) => {
                 <img
                   src="/images/gallery/Raw-Jute.webp"
                   alt="Raw jute fibre in graded bales — starting point for yarn, fabrics, bags, and rope"
+                  width={630}
+                  height={450}
                   className="max-h-64 w-full rounded-xl border border-border/60 bg-muted object-cover shadow-sm grayscale"
                 />
               </Reveal>
