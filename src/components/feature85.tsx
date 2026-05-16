@@ -6,6 +6,7 @@ import {
   Archive,
   Settings2,
 } from "lucide-react";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/reveal";
@@ -84,11 +85,12 @@ const Feature85 = ({ className }: Feature85Props) => {
                 </h2>
               </Reveal>
               <Reveal direction="none" delay={0.05}>
-                <img
+                <Image
                   src="/images/gallery/Raw-Jute.webp"
                   alt="Raw jute fibre in graded bales — starting point for yarn, fabrics, bags, and rope"
                   width={630}
                   height={450}
+                  sizes="(max-width: 768px) 100vw, 768px"
                   className="max-h-64 w-full rounded-xl border border-border/60 bg-muted object-cover shadow-sm grayscale"
                 />
               </Reveal>
