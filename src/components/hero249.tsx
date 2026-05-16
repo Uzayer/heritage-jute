@@ -6,13 +6,23 @@ import {
   MarqueeFade,
   MarqueeItem,
 } from "@/components/kibo-ui/marquee";
-import { Globe } from "@/components/ui/globe";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/reveal";
 import { MotionCta } from "@/components/motion/cta-motion";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
+
+const Globe = dynamic(
+  () => import("@/components/ui/globe").then((m) => ({ default: m.Globe })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="absolute inset-0 mx-auto aspect-square w-full max-w-150 animate-pulse rounded-full bg-muted/40" />
+    ),
+  }
+);
 
 interface Hero249Props {
   className?: string;
@@ -110,7 +120,7 @@ const Hero249 = ({ className }: Hero249Props) => {
             </div>
           </motion.div>
           <Reveal
-            className="relative flex min-h-[320px] items-center justify-center"
+            className="relative hidden xl:flex min-h-[320px] items-center justify-center"
             direction="none"
             delay={0.05}
           >

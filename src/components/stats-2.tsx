@@ -1,4 +1,4 @@
-import { Map } from "@/components/map"
+import { MapLazy } from "@/components/map-lazy"
 import { Reveal } from "@/components/motion/reveal"
 
 export function StatsSection() {
@@ -13,7 +13,7 @@ export function StatsSection() {
                     </Reveal>
 
                     <Reveal className="mask-y-from-75% mx-auto max-w-4xl" direction="none" delay={0.05}>
-                        <Map />
+                        <MapLazy />
                     </Reveal>
 
                     <div className="relative mx-auto max-w-3xl">
